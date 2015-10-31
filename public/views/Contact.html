@@ -1,0 +1,22 @@
+<div ng-controller="HomeController as vm">
+
+<form ng-submit="vm.contact()" >
+  <md-input-container layout-padding>
+    <label> Name </label>
+    <input required ng-model="vm.msg.name" ></input>
+  </md-input-container>
+  <md-input-container layout-padding>
+    <label> Unit Number </label>
+    <input required ng-model="vm.msg.unit"></input>
+  </md-input-container>
+  <md-input-container layout-padding>
+    <label> Message </label>
+    <textarea required ng-model="vm.msg.msg" md-maxlength="1000"></textarea>
+  </md-input-container>
+
+  <div style="padding-top:50px" layout="row">
+    <md-button type="submit" class="md-raised" > Send </md-button>
+    <md-button type="button" class="md-raised" ui-sref="Home">Cancel</md-button>
+</div>
+</form>
+</div>

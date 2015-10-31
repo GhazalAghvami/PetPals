@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+<head>
+	<title> </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/angular-material/angular-material.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.1.2/css/material-design-iconic-font.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/site.css">
+</head>
+
+<body ng-controller='GlobalController as nav'>
+	<md-toolbar style=" background-color: #ff8d00;" layout>
+
+		<section layout flex layout-align="left">
+			<img src="/images/petspals.png" ui-sref="Home" style="padding-left: 30px">
+		</section>
+
+		<section flex-offset="30">
+			<div layout>
+			<md-button ui-sref="Home" class="userFont" ng-show='nav.status.username;'> Welcome {{nav.status.username}} </md-button>
+			<md-button type='button' class="userFont" ng-click='nav.logout()' ng-show='nav.status.username;'> Logout </md-button>
+			<md-button type='button' class="userFont" ui-sref='RegLog' ng-show='!nav.status.username;'> Login/Register </md-button>
+		</div>
+		</section>
+
+	</md-toolbar>
+	<div style='text-align:center; height:50px; width:100%; margin:auto; background-color: #696969;' flex>
+		<md-button ui-sref="Home"> HOME </md-button>
+		<md-button ui-sref="About"> HOW IT WORKS </md-button>
+		<md-button ui-sref="ViewPets"> PETS </md-button>
+		<md-button ui-sref="ViewSitters"> PALS </md-button>
+		<md-button ui-sref="Post"> POST </md-button>
+		<md-button ui-sref="Contact"> CONTACT MANAGEMENT </md-button>
+	</div>
+
+	<ui-view></ui-view>
+	<!-- Ext Libs -->
+	<script src="angular/angular.min.js"></script>
+	<script src="angular-ui-router/release/angular-ui-router.min.js"></script>
+	<!-- Material -->
+	<script src="/angular-material/angular-material.min.js"></script>
+	<script src="/angular-aria/angular-aria.min.js"></script>
+	<script src="/angular-animate/angular-animate.min.js"></script>
+	<!-- Global Src -->
+	<script src="/javascript/app.js"></script>
+	<!-- Factories -->
+	<script src="/javascript/services/HomeFactory.js"></script>
+	<script src="/javascript/services/SitterFactory.js"></script>
+	<script src="/javascript/services/PetFactory.js"></script>
+	<script src="/javascript/services/UserFactory.js"></script>
+	<script src="/javascript/services/AuthInterceptor.js"></script>
+	<!-- Controllers -->
+	<script src="/javascript/controllers/HomeController.js"></script>
+	<script src="/javascript/controllers/GlobalController.js"></script>
+	<script src="/javascript/controllers/AddPetController.js"></script>
+	<script src="/javascript/controllers/AddSitterController.js"></script>
+	<script src="/javascript/controllers/EditSitterController.js"></script>
+	<script src="/javascript/controllers/EditPetController.js"></script>
+	<script src="/javascript/controllers/ViewSittersController.js"></script>
+	<script src="/javascript/controllers/ViewPetsController.js"></script>
+
+</body>
+
+</html>
