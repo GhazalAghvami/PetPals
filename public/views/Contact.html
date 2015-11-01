@@ -1,20 +1,25 @@
 <div ng-controller="HomeController as vm">
 
-<form ng-submit="vm.contact()" >
+<form ng-submit="vm.contact()" style="padding: 90px">
+  <img src="/images/msg.png" style="padding:20px" layout-align="center">
   <md-input-container layout-padding>
     <label> Name </label>
     <input required ng-model="vm.msg.name" ></input>
   </md-input-container>
   <md-input-container layout-padding>
-    <label> Unit Number </label>
+    <label> Suite Number </label>
     <input required ng-model="vm.msg.unit"></input>
   </md-input-container>
+  <md-input-container layout-padding>
+  <label> Email </label>
+  <input required ng-model="vm.msg.email"></input>
+</md-input-container>
   <md-input-container layout-padding>
     <label> Message </label>
     <textarea required ng-model="vm.msg.msg" md-maxlength="1000"></textarea>
   </md-input-container>
 
-  <div style="padding-top:50px" layout="row">
+  <div style="padding-top:50px" layout>
     <md-button type="submit" class="md-raised" > Send </md-button>
     <md-button type="button" class="md-raised" ui-sref="Home">Cancel</md-button>
 </div>

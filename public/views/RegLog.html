@@ -1,7 +1,8 @@
-<div style='text-align:center; padding-top: 20px; padding-bottom: 20px; height:90px; width:100%; margin:auto; background-color: #696969;' flex>
-  <h2>Login OR Register</h2>
-</div>
-<div style="padding-top: 100px">
+
+
+<!-- Show the Login Form -->
+
+<div style="padding: 90px">
   <div ng-show="nav.isLogin">
     <form class="well container" ng-submit="nav.login()">
       <md-input-container>
@@ -27,7 +28,7 @@
       <input class="form-control" ng-model="nav.user.name">
       </md-input-container>
         <md-input-container>
-      <label>Unit</label>
+      <label>Suite</label>
       <input class="form-control" ng-model="nav.user.unit">
       </md-input-container>
       <md-input-container>

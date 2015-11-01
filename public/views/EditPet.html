@@ -1,6 +1,6 @@
 <div ng-controller="EditPetController as vm">
 
-  <form ng-submit="vm.updatePet()" layout="row">
+  <form ng-submit="vm.updatePet()" layout="row" style="padding: 90px">
  <div flex="60" style="padding-left: 40px">
         <md-input-container layout-padding>
 
@@ -12,7 +12,7 @@
           <input required ng-model="vm.editPet.owner" ></input>
         </md-input-container>
         <md-input-container layout-padding>
-          <label> Unit Number </label>
+          <label> Suite Number </label>
           <input required ng-model="vm.editPet.unit" ></input>
         </md-input-container>
         <md-input-container layout-padding>

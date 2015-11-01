@@ -1,13 +1,13 @@
 <div ng-controller="EditSitterController as vm">
 
-  <form ng-submit="vm.updateSitter()" layout="row">
+  <form ng-submit="vm.updateSitter()" layout="row" style="padding: 90px">
 <div flex="60" style="padding-left: 40px">
     <md-input-container layout-padding>
       <label> Pal Name </label>
       <input required ng-model="vm.editSitter.name" ></input>
     </md-input-container>
     <md-input-container layout-padding>
-      <label> Unit Number </label>
+      <label> Suite Number </label>
       <input required ng-model="vm.editSitter.unit" ></input>
     </md-input-container>
     <md-input-container layout-padding>

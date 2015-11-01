@@ -1,17 +1,16 @@
 (function() {
-	'use strict';
-	angular.module('app')
-	.controller('HomeController', HomeController);
+  'use strict';
+  angular.module('app')
+    .controller('HomeController', HomeController);
 
-	function HomeController($state, UserFactory, $stateParams) {
-		var vm = this;
-		vm.msg ={};
-		vm.status = UserFactory.status;
+  function HomeController($state, UserFactory, $stateParams) {
+    var vm = this;
+    vm.status = UserFactory.status;
+    vm.posts = {name:vm.status.name, unit:vm.status.unit};
 
-console.log(vm.status);
 
-vm.contact = function(){
-$state.go("Home");
-};
-	}
+    vm.contact = function() {
+      $state.go("Home");
+    };
+  }
 })();

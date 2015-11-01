@@ -1,13 +1,13 @@
 <div ng-controller="AddPetController as vm">
 
-  <form ng-submit="vm.addPet()" layout="row">
+  <form ng-submit="vm.addPet()" layout="row" style="padding: 90px">
     <div flex="60" style="padding-left: 40px">
       <md-input-container layout-padding>
         <label> Your Name </label>
         <input required ng-model="vm.pet.owner"></input>
       </md-input-container>
       <md-input-container layout-padding>
-        <label> Unit Number </label>
+        <label> Suite Number </label>
         <input required ng-model="vm.pet.unit"></input>
       </md-input-container>
       <md-input-container layout-padding>

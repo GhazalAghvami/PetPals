@@ -2,7 +2,7 @@
   margin-top: 10px;
   margin-bottom: 5px;
   font-size: 200%;
-}
+
 
 .homeButton :hover{
   cursor: pointer;
@@ -17,28 +17,4 @@ a{
 }
 a:visited{
   color: #fff;
-}
-
-md-grid-tile {
-  border-radius: 25px;
-  display: flex;
-  position: relative;
-  align-items: center;
-  justify-content: center;
-  font-size: 50px;
-  border: 1px solid #ddd;
-  flex-grow: 1;
-  width: 33.3333%;
-}
-
-.gridButton :hover{
-  cursor: pointer;
-  box-shadow: 2px 0px 2px 2px black;
-  border-radius: 25px 25px 25px 25px;
-}
-
-.gridButton figure :hover{
-  cursor: pointer;
-  box-shadow: none;
-  border-radius: none;
 }
