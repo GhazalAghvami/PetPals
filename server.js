@@ -6,6 +6,7 @@ var port = process.env.PORT || 3000;
 var passport = require("passport");
 var mongoose = require('mongoose');
 require('./models/PetModel');
+require('./models/ChatModel');
 require('./models/SitterModel');
 require('./models/User');
 require('./config/passport');
@@ -36,6 +37,7 @@ app.use(bodyParser.json());
 var petRoutes = require('./routes/PetRoutes');
 var sitterRoutes = require('./routes/SitterRoutes');
 var userRoutes = require('./routes/UserRoutes');
+var postRoutes = require('./routes/ChatRoutes');
 
 //on homepage load, render the index page
 app.get('/', function(req, res) {
@@ -46,6 +48,8 @@ app.get('/', function(req, res) {
 app.use('/api/pet', petRoutes);
 app.use('/api/sitter', sitterRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/posts', postRoutes);
+
 
 var server = app.listen(port, function() {
   var host = server.address().address;

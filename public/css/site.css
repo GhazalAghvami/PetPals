@@ -2,19 +2,4 @@
   margin-top: 10px;
   margin-bottom: 5px;
   font-size: 200%;
-
-
-.homeButton :hover{
-  cursor: pointer;
-}
-
-.list-group-item{
-  padding : 20px;
-}
-
-a{
-  color:#fff;
-}
-a:visited{
-  color: #fff;
 }

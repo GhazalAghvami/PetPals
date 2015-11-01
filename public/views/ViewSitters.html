@@ -5,11 +5,11 @@
   <md-content style="padding-left: 90px; padding-bottom: 90px;">
     <div layout layout-wrap>
       <md-card  flex="30" layout-wrap ng-repeat="a in vm.sitters">
-        <img ng-src="/images/sitters.png" style="height:90px; width:90px; margin:auto; padding-top:20px">
+        <img ng-src="/images/polkapal.png" style="height:90px; width:90px; margin:auto; padding-top:20px">
         <md-card-content layout-wrap>
           <span flex></span>
           <div style="text-align:center;">
-            <h1> {{a.name}}</h1>
+            <h1> {{a.name | uppercase }}</h1>
           </div>
           <h4> Suite: </h4>
           <h5> {{a.unit}} </h5>
