@@ -26,7 +26,6 @@ router.param('id', function(req, res, next, id) {
 });
 
 router.post('/', auth, function(req, res, next) {
-  console.log(req.body);
   var pet = new Pet(req.body);
   pet.save(function(err, result) {
     res.send(result);

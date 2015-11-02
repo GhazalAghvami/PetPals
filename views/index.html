@@ -5,35 +5,83 @@
 	<title> </title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="/angular-material/angular-material.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.1.2/css/material-design-iconic-font.min.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" type="text/css" href="/css/site.css">
 </head>
 
 <body ng-controller='GlobalController as nav'>
+
+	<md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
+			<md-toolbar class="md-theme-light" style="padding : 10px; background-color: #38B0DE">
+				<h1 class="md-toolbar-tools"> Login/Register </h1>
+			</md-toolbar>
+			<md-content  layout-padding>
+				<div ng-show="nav.isLogin">
+				<form ng-submit="nav.login();">
+					<md-input-container>
+						<label>Username</label>
+						<input type="text" ng-model="nav.user.username" >
+					</md-input-container>
+					<md-input-container>
+						<label>Password</label>
+						<input type="password" ng-model="nav.user.password">
+					</md-input-container>
+				<md-button type="submit" class="md-raised">
+					Login
+				</md-button>
+				<md-button ng-click="nav.isLogin = false;" class="md-raised">
+					Register
+				</md-button>
+			</form>
+			</div>
+
+				<div ng-show="!nav.isLogin">
+        <form ng-submit="nav.register();">
+          <md-input-container>
+          <label>Name</label>
+          <input ng-model="nav.user.name">
+          </md-input-container>
+            <md-input-container>
+          <label>Suite</label>
+          <input ng-model="nav.user.unit">
+          </md-input-container>
+          <md-input-container>
+            <label>Username</label>
+            <input ng-model="nav.user.username">
+          </md-input-container>
+          <md-input-container>
+            <label>Email</label>
+            <input type="email" ng-model="nav.user.email">
+          </md-input-container>
+          <md-input-container>
+            <label>Password</label>
+            <input type="password" ng-model="nav.user.password">
+          </md-input-container>
+          <md-button type="submit" class="md-raised"> Register</md-button>
+          <md-button type="button" class="md-raised" ng-click="nav.isLogin = true;">Cancel</md-button>
+        </form>
+      </div>
+			</md-content>
+		</md-sidenav>
+
 	<md-toolbar style=" background-color: #ff8d00;" layout>
 
-		<section layout flex layout-align="left">
+		<section layout flex layout-align="left" style="padding-left:20px">
 			<img src="/images/petspals.png" ui-sref="Home" style="padding-left: 30px">
 		</section>
-
-		<section flex-offset="30">
-			<div layout>
-			<md-button ui-sref="Home" class="userFont" ng-show='nav.status.username;'> Welcome {{nav.status.username}} </md-button>
-			<md-button type='button' class="userFont" ng-click='nav.logout()' ng-show='nav.status.username;'> Logout </md-button>
-			<md-button type='button' class="userFont" ui-sref='RegLog' ng-show='!nav.status.username;'> Login/Register </md-button>
-		</div>
+		<section flex-offset="30" layout layout-align="end end">
+			<md-button type="md-flat" disabled ng-show='nav.status.username;'> Welcome {{nav.status.username}} </md-button>
+			<md-button type='button' ng-click='nav.logout()' ng-show='nav.status.username;'> Logout </md-button>
+			<md-button ng-click='nav.toggleRight();' ng-show='!nav.status.username;'> Login/Register </md-button>
 		</section>
-
 	</md-toolbar>
 	<div style='text-align:center; height:50px; width:100%; margin:auto; background-color: #696969;' flex>
-		<md-button ui-sref="Home"> HOME </md-button>
-		<md-button ui-sref="About"> HOW IT WORKS </md-button>
-		<md-button ui-sref="ViewPets"> PETS </md-button>
-		<md-button ui-sref="ViewSitters"> PALS </md-button>
-		<md-button ui-sref="Chat"> CHAT </md-button>
-		<md-button ui-sref="Post"> POST </md-button>
-		<md-button ui-sref="Contact"> CONTACT MANAGEMENT </md-button>
+		<md-button style="color: white"ui-sref="Home"> HOME </md-button>
+		<md-button style="color: white"ui-sref="About"> HOW IT WORKS </md-button>
+		<md-button style="color: white"ui-sref="ViewPets"> PETS </md-button>
+		<md-button style="color: white"ui-sref="ViewSitters"> PALS </md-button>
+		<md-button style="color: white"ui-sref="Chat"> CHAT </md-button>
+		<md-button style="color: white"ui-sref="Contact"> CONTACT MANAGEMENT </md-button>
 	</div>
 
 	<ui-view></ui-view>
@@ -62,6 +110,9 @@
 	<script src="/javascript/controllers/EditPetController.js"></script>
 	<script src="/javascript/controllers/ViewSittersController.js"></script>
 	<script src="/javascript/controllers/ViewPetsController.js"></script>
+	<script src="/javascript/filters/usernamefilter.js"></script>
+
+
 
 
 </body>

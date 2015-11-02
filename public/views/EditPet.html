@@ -1,4 +1,4 @@
-<div ng-controller="EditPetController as vm">
+<div ng-controller="EditPetController as vm" class='bodyColor'>
 
   <form ng-submit="vm.updatePet()" layout="row" style="padding: 90px">
  <div flex="60" style="padding-left: 40px">
@@ -30,7 +30,7 @@
 
         <md-input-container layout-padding>
           <label> Describe Your Pet </label>
-          <textarea required ng-model="vm.editPet.bio" columns="1" md-maxlength="1000"></textarea>
+          <textarea required ng-model="vm.editPet.bio" columns="1" md-maxlength="2000"></textarea>
           </md-input-container>
 
         <div layout="row" style="padding-top:50px">

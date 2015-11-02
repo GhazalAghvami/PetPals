@@ -49,11 +49,11 @@
       });
     };
 
-    vm.showAlert = function(bio) {
+    vm.showAlert = function(a) {
       alert = $mdDialog.alert({
-        title: 'Pet Description',
-        content: bio,
-        ok: 'Done!',
+        title: a.name + " the " + a.type,
+        content: a.bio ,
+        ok: 'Okay!',
       });
       $mdDialog
         .show(alert)
@@ -61,21 +61,6 @@
           alert = undefined;
         });
     };
-
-    // $mdDialog.show(
-    //   $mdDialog.alert()
-    //     .parent(angular.element(document.body))
-    //     .title('This is an alert title')
-    //     .content('You can specify some description text in here.')
-    //     .ariaLabel('Alert Dialog Demo')
-    //     .ok('Got it!')
-    //     .targetEvent(ev)
-    // );
-    // };
-
-
-
-
 
   }
 })();

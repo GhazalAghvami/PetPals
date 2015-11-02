@@ -1,10 +1,10 @@
-<div ng-controller="AddPetController as vm">
+<div ng-controller="AddPetController as vm" class='bodyColor'>
 
   <form ng-submit="vm.addPet()" layout="row" style="padding: 90px">
     <div flex="60" style="padding-left: 40px">
       <md-input-container layout-padding>
         <label> Your Name </label>
-        <input required ng-model="vm.pet.owner"></input>
+        <input required ng-model="vm.pet.owner | usernameFilter"></input>
       </md-input-container>
       <md-input-container layout-padding>
         <label> Suite Number </label>
@@ -29,7 +29,7 @@
         <md-input-container layout-padding>
         <md-input-container layout-padding>
           <label> Describe Your Pet </label>
-          <textarea required ng-model="vm.pet.bio" md-maxlength="1000"></textarea>
+          <textarea required ng-model="vm.pet.bio" md-maxlength="2000"></textarea>
         </md-input-container>
 
         <div layout="row" style="padding-top:50px">

@@ -1,30 +1,41 @@
-<div ng-controller="ViewPetsController as vm">
-			<div style="text-align:center; padding:25px;">
-				<md-button layout-fill class="md-raised" ui-sref="AddPet"> ADD YOUR PET </md-button>
-			</div>
-		<md-content style="padding-left: 90px; padding-bottom: 90px;">
-			<div layout layout-wrap >
-				<md-card layout="column" flex="30" layout-wrap ng-repeat="a in vm.pets" >
-					<img ng-src="{{a.typeImage}}" class="md-card-image" style="height:90px; width:90px; margin:auto; padding-top:20px">
-					<md-card-content layout-wrap>
-						<span flex></span>
-						<div style="text-align:center;">
-							<h1> {{a.name | uppercase}}  </h1>
-						</div>
-						<h4> Owner: </h4>
-						<h5>{{a.owner | uppercase}}</h5>
-						<h4> Suite: </h4>
-						<h5>{{a.unit | uppercase }} </h5>
-						<span flex></span>
-					</md-card-content>
-					<div layout>
-						<span flex></span>
-						<md-button ng-click="vm.showAlert(a.bio)"> Know More </md-button>
-						<md-button ng-show='nav.status.username;' ng-click="vm.editPet(a._id, a)"> Edit </md-button>
-						<md-button ng-show='nav.status.username;' ng-click="vm.deletePet(a)"> Delete </md-button>
-						<span flex></span>
-					</div>
-				</md-card>
-		</md-content>
+<div ng-controller="ViewPetsController as vm" class='bodyColor'>
+	<div style="text-align:center; padding:25px;">
+		<md-button layout-fill class="md-raised" ui-sref="AddPet"> CLICK TO ADD YOUR PET TO OUR LIST OF PETS</md-button>
+	</div>
+	<section layout layout-align="center">
+		<div class="animated bounceInLeft" style="padding-bottom: 30px">
+			<img src="/images/fish.png" style="padding:20px">
+			<img src="/images/dog.png" style="padding:20px">
+			<img src="/images/cat.png" style="padding:20px">
+			<img src="/images/rabbit.png" style="padding:20px">
+			<img src="/images/spider.png" style="padding:20px">
+			<img src="/images/turtle.png" style="padding:20px">
 		</div>
+	</section>
+	<md-content style="padding-left: 90px; padding-bottom: 90px;" class='bodyColor'>
+		<div layout layout-wrap >
+			<md-card layout="column" flex="30" layout-wrap ng-repeat="a in vm.pets">
+				<!-- <img ng-src="{{a.typeImage}}" class="md-card-image" style="height:90px; width:90px; margin:auto; padding-top:20px"> -->
+				<md-card-content layout-wrap>
+					<span flex></span>
+					<div style="text-align:center;">
+						<h1> {{a.name | uppercase}} </h1>
+						<h5> The {{a.type}}</h5>
+					</div>
+					<h4> Owner: </h4>
+					<h5>{{a.owner  | usernameFilter}}</h5>
+					<h4> Suite: </h4>
+					<h5>{{a.unit}} </h5>
+					<span flex></span>
+				</md-card-content>
+				<div layout>
+					<span flex></span>
+					<md-button ng-click="vm.showAlert(a)"> Know More </md-button>
+					<md-button ng-show='nav.status.username;' ng-click="vm.editPet(a._id, a)"> Edit </md-button>
+					<md-button ng-show='nav.status.username;' ng-click="vm.deletePet(a)"> Delete </md-button>
+					<span flex></span>
+				</div>
+			</md-card>
+	</md-content>
+	</div>
 </div>

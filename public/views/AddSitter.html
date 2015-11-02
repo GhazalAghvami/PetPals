@@ -1,10 +1,10 @@
-<div ng-controller="AddSitterController as vm">
+<div ng-controller="AddSitterController as vm" class='bodyColor'>
 
   <form ng-submit="vm.addSitter()" layout="row" style="padding: 90px">
 <div flex="60" style="padding-left: 40px">
     <md-input-container layout-padding>
       <label> Pal Name </label>
-      <input required ng-model="vm.sitter.name" ></input>
+      <input required ng-model="vm.sitter.name | usernameFilter" ></input>
     </md-input-container>
     <md-input-container layout-padding>
       <label> Suite Number </label>
@@ -12,7 +12,7 @@
     </md-input-container>
     <md-input-container layout-padding>
       <label> Describe Yourself </label>
-      <textarea ng-model="vm.sitter.bio" columns="1" md-maxlength="1000"></textarea>
+      <textarea ng-model="vm.sitter.bio" columns="1" md-maxlength="2000"></textarea>
       </md-input-container>
 
     <div layout="row" style="padding-top:50px">

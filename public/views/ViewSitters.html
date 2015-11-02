@@ -1,11 +1,19 @@
-<div ng-controller="ViewSittersController as vm" >
+<div ng-controller="ViewSittersController as vm" class='bodyColor'>
   <div style="text-align:center; padding:25px;">
     <md-button layout-fill class="md-raised" ui-sref="AddSitter"> CLICK TO ADD YOURSELF TO OUR LIST OF PALS </md-button>
   </div>
-  <md-content style="padding-left: 90px; padding-bottom: 90px;">
+  <section layout layout-align="center">
+  <div class="animated bounceInLeft" style="padding-bottom: 30px" >
+    <img src="/images/peeps.png" style="padding:8px">
+    <img src="/images/peeps.png" style="padding:8px">
+    <img src="/images/peeps.png" style="padding:8px">
+  <img src="/images/peeps.png" style="padding:8px">
+</div>
+</section>
+  <md-content style="padding-left: 90px; padding-bottom: 90px;" class='bodyColor'>
     <div layout layout-wrap>
       <md-card  flex="30" layout-wrap ng-repeat="a in vm.sitters">
-        <img ng-src="/images/polkapal.png" style="height:90px; width:90px; margin:auto; padding-top:20px">
+        <!-- <img ng-src="/images/polkapal.png" style="height:90px; width:90px; margin:auto; padding-top:20px"> -->
         <md-card-content layout-wrap>
           <span flex></span>
           <div style="text-align:center;">
