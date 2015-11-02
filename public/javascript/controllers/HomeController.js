@@ -11,7 +11,7 @@
 
     vm.addMsg = function() {
       HomeFactory.addMsg(vm.chats).then(function(){
-       vm.chats = {};
+       vm.chats.msg = null;
       });
     };
 

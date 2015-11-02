@@ -13,9 +13,9 @@
         url: '/about',
         templateUrl: 'views/about.html'
       })
-      .state('Post', {
-        url: '/post',
-        templateUrl: 'views/post.html'
+      .state('Chat', {
+        url: '/chat',
+        templateUrl: 'views/chat.html'
       })
       .state('Contact', {
         url: '/contact',

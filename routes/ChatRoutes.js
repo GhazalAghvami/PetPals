@@ -26,7 +26,6 @@ router.param('id', function(req, res, next, id) {
 });
 
 router.post('/', auth, function(req, res, next) {
-  console.log(req.body);
   var chat = new Chat(req.body);
   chat.save(function(err, result) {
     res.send(result);
@@ -41,19 +40,5 @@ router.get('/', function(req, res, next) {
 });
 
 
-// router.delete('/:id', auth, function(req, res, next) {
-//   Chat.remove({_id: req.params.id}, function(err, result) {
-//       if(err) {return next(err);}
-//       res.send();
-//   });
-// });
-//
-// router.put('/:id', auth, function(req,res, next){
-//   Chat.update({_id: req.body._id}, req.body, function(err, result){
-//     if (err) return next(err);
-//     if (!result) return next ({err: "That Chat wasnt found for updating"});
-//     res.send(result);
-//     });
-//   });
 
 module.exports = router;

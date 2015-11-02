@@ -37,7 +37,7 @@ app.use(bodyParser.json());
 var petRoutes = require('./routes/PetRoutes');
 var sitterRoutes = require('./routes/SitterRoutes');
 var userRoutes = require('./routes/UserRoutes');
-var postRoutes = require('./routes/ChatRoutes');
+var chatRoutes = require('./routes/ChatRoutes');
 
 //on homepage load, render the index page
 app.get('/', function(req, res) {
@@ -48,7 +48,7 @@ app.get('/', function(req, res) {
 app.use('/api/pet', petRoutes);
 app.use('/api/sitter', sitterRoutes);
 app.use('/api/users', userRoutes);
-app.use('/api/posts', postRoutes);
+app.use('/api/chats', chatRoutes);
 
 
 var server = app.listen(port, function() {

@@ -9,11 +9,10 @@
 
 		o.addMsg = function(indx) {
 		  var q = $q.defer();
-		  $http.chat('/api/chats', indx).success(function(){
+		  $http.post('/api/chats', indx).success(function(){
 		  q.resolve();
 		});
 		return q.promise;
-
 		};
 
 		o.getMsg = function () {
