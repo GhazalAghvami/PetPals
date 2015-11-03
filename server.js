@@ -14,7 +14,7 @@ require('./models/SitterModel');
 require('./models/User');
 require('./config/passport');
 
-mongoose.connect(process.env.MONGO_URI);
+mongoose.connect(process.env.MONGOLAB_URI);
 
 app.set('views', path.join(__dirname, 'views'));
 //set the view engine that will render HTML from the server to the client
