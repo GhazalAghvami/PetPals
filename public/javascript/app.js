@@ -11,7 +11,7 @@
       })
       .state('About', {
         url: '/about',
-        templateUrl: 'views/About.html'
+        templateUrl: 'views/about.html'
       })
       .state('Chat', {
         url: '/chat',
