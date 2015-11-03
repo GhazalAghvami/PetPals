@@ -7,47 +7,47 @@
     $stateProvider
       .state('Home', {
         url: '/',
-        templateUrl: 'views/Home.html'
+        templateUrl: 'templates/Home.html'
       })
       .state('About', {
         url: '/about',
-        templateUrl: 'views/about.html'
+        templateUrl: 'templates/about.html'
       })
       .state('Chat', {
         url: '/chat',
-        templateUrl: 'views/Chat.html'
+        templateUrl: 'templates/Chat.html'
       })
       .state('Contact', {
         url: '/contact',
-        templateUrl: 'views/Contact.html'
+        templateUrl: 'templates/Contact.html'
       })
       .state('AddPet', {
         url: '/addpet/:id',
-        templateUrl: 'views/AddPet.html'
+        templateUrl: 'templates/AddPet.html'
       })
       .state('EditPet', {
         url: '/editpet/:id',
-        templateUrl: 'views/EditPet.html'
+        templateUrl: 'templates/EditPet.html'
       })
       .state('AddSitter', {
         url: '/addsitter',
-        templateUrl: 'views/AddSitter.html'
+        templateUrl: 'templates/AddSitter.html'
       })
 			.state('EditSitter', {
 				url: '/editsitter',
-				templateUrl: 'views/EditSitter.html'
+				templateUrl: 'templates/EditSitter.html'
 			})
       .state('ViewSitters', {
-        url: '/viewsitters/:id',
-        templateUrl: 'views/ViewSitters.html'
+        url: '/templatesitters/:id',
+        templateUrl: 'templates/ViewSitters.html'
       })
 			.state('ViewPets', {
 				url: '/viewpets/:id',
-				templateUrl: 'views/ViewPets.html'
+				templateUrl: 'templates/ViewPets.html'
 			})
       .state('RegLog', {
         url: '/reglog',
-        templateUrl: 'views/RegLog.html'
+        templateUrl: 'templates/RegLog.html'
       });
     $urlRouterProvider.otherwise('/');
     $httpProvider.interceptors.push('AuthInterceptor');
