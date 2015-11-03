@@ -1,3 +1,6 @@
+if(process.env.NODE_ENV !== 'production') {
+  require('dotenv').load();
+}
 var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
@@ -11,13 +14,13 @@ require('./models/SitterModel');
 require('./models/User');
 require('./config/passport');
 
-mongoose.connect("mongodb://localhost/PetSitters");
+mongoose.connect(process.env.MONGO_URI);
 
 app.set('views', path.join(__dirname, 'views'));
 //set the view engine that will render HTML from the server to the client
 app.engine('.html', require('ejs').renderFile);
 //Allow for these directories to be usable on the client side
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/dist'));
 app.use(express.static(__dirname + '/bower_components'));
 //we want to render html files
 app.set('view engine', 'html');

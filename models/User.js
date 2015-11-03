@@ -31,7 +31,7 @@ UserSchema.methods.createToken = function() {
    email: this.email,
    unit: this.unit
 
- }, "Secret"); //Add Passcode here
+ }, process.env.AUTH_SECRET); //Add Passcode here
 };
 
 mongoose.model('User', UserSchema);

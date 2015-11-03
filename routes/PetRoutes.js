@@ -6,7 +6,7 @@ var Pet = mongoose.model('Pet');
 var jwt = require('express-jwt');
 var auth = jwt({
   userProperty: "payload", //req.payload._id in the Route
-  secret: "Secret" //matches the secret in model
+  secret: (process.env.AUTH_SECRET)  //matches the secret in model
 });
 
 
