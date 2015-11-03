@@ -19,7 +19,7 @@
       })
       .state('Contact', {
         url: '/contact',
-        templateUrl: 'views/contact.html'
+        templateUrl: 'views/Contact.html'
       })
       .state('AddPet', {
         url: '/addpet/:id',
