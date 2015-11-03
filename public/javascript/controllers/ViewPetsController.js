@@ -10,30 +10,6 @@
 
     PetFactory.getAllPets().then(function(res) {
       vm.pets = res;
-
-      for (var i = 0; i < vm.pets.length; i++) {
-        switch (vm.pets[i].type) {
-          case 'Dog':
-            vm.pets[i].typeImage = "/images/dog.png";
-            break;
-          case 'Cat':
-            vm.pets[i].typeImage = "/images/cat.png";
-            break;
-          case 'Rabbit':
-            vm.pets[i].typeImage = "/images/rabbit.png";
-            break;
-          case 'Fish':
-            vm.pets[i].typeImage = "/images/fish.png";
-            break;
-          case 'Bird':
-            vm.pets[i].typeImage = "/images/bird.png";
-            break;
-          case 'Other':
-            vm.pets[i].typeImage = "/images/turtle.png";
-            break;
-        }
-      }
-
     });
 
     vm.deletePet = function(pet) {

@@ -47,8 +47,6 @@
       });
     };
 
-
-
     vm.toggleRight = function() {
       $mdSidenav('right').toggle();
     };
@@ -56,7 +54,6 @@
     vm.close = function() {
       $mdSidenav('right').toggle();
     };
-
 
   }
 })();

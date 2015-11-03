@@ -55,5 +55,4 @@ var auth = jwt({
      });
 
 
-
    module.exports = router;

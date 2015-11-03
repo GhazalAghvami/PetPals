@@ -23,7 +23,6 @@
 
     setInterval(vm.getMsg, 500);
 
-
     vm.contact = function() {
       $state.go("Home");
     };

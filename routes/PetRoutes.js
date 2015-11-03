@@ -55,6 +55,4 @@ router.put('/:id', auth, function(req,res, next){
     });
   });
 
-
-
 module.exports = router;
