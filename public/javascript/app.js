@@ -7,15 +7,15 @@
     $stateProvider
       .state('Home', {
         url: '/',
-        templateUrl: 'views/home.html'
+        templateUrl: 'views/Home.html'
       })
       .state('About', {
         url: '/about',
-        templateUrl: 'views/about.html'
+        templateUrl: 'views/About.html'
       })
       .state('Chat', {
         url: '/chat',
-        templateUrl: 'views/chat.html'
+        templateUrl: 'views/Chat.html'
       })
       .state('Contact', {
         url: '/contact',
