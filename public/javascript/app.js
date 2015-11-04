@@ -15,7 +15,7 @@
       })
       .state('Chat', {
         url: '/chat',
-        templateUrl: 'views/chat.html'
+        templateUrl: 'views/Chat.html'
       })
       .state('Contact', {
         url: '/contact',
