@@ -7,11 +7,11 @@
         $stateProvider
             .state('Home', {
                 url: '/',
-                templateUrl: 'views/home.html'
+                templateUrl: '/views/Home.html'
             })
             .state('About', {
                 url: '/about',
-                templateUrl: 'views/about.html'
+                templateUrl: '/views/About.html'
             })
             .state('Chat', {
                 url: '/chat',
@@ -19,7 +19,7 @@
             })
             .state('Contact', {
                 url: '/contact',
-                templateUrl: 'views/contact.html'
+                templateUrl: 'views/Contact.html'
             })
             .state('AddPet', {
                 url: '/addpet/:id',
@@ -53,21 +53,6 @@
         $httpProvider.interceptors.push('AuthInterceptor');
 
     }
-})();
-
-(function() {
-    'use strict';
-    angular.module('app')
-        .filter('usernameFilter', usernameFilter);
-
-    function usernameFilter() {
-        return function(item) {
-            var str = item.split("");
-            str[0] = str[0].toUpperCase();
-            return str.join("");
-        };
-    }
-
 })();
 
 (function() {
@@ -350,6 +335,21 @@
 
 
     }
+})();
+
+(function() {
+    'use strict';
+    angular.module('app')
+        .filter('usernameFilter', usernameFilter);
+
+    function usernameFilter() {
+        return function(item) {
+            var str = item.split("");
+            str[0] = str[0].toUpperCase();
+            return str.join("");
+        };
+    }
+
 })();
 
 (function() {
