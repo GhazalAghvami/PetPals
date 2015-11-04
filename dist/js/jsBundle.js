@@ -175,7 +175,7 @@
                 var name = vm.status.name.split("");
                 name[0] = name[0].toUpperCase();
                 name = name.join("");
-                vm.showSimpleToast('Welcome to your buildings website ' + name + '!');
+                vm.showSimpleToast('Welcome to Pets & Pals ' + name + '!');
             });
         };
 
