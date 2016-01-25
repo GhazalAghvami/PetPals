@@ -8,6 +8,7 @@ notify = require('gulp-notify');
 sass = require('gulp-ruby-sass');
 minifycss = require('gulp-minify-css');
 autoprefixer = require('gulp-autoprefixer');
+htmlmin = require('gulp-htmlmin');
 
 
 gulp.task('styles', function() {
@@ -18,6 +19,12 @@ gulp.task('styles', function() {
   .pipe(minifycss())
   .pipe(gulp.dest('./dist/css'))
   .pipe(notify({message: "SASS Compiled"}));
+});
+
+gulp.task('minify', function() {
+  return gulp.src('public/views/*.html')
+    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(gulp.dest('dist/views'));
 });
 
 
@@ -34,5 +41,6 @@ gulp.task('scripts', function(){
 });
 
 gulp.task('watch', function(){
-  gulp.watch('.public/javascript/**/*.js', ['scripts']);
+  gulp.watch('./public/javascript/**/*.js', ['scripts']);
+    gulp.watch('./public/views/**/*.html', ['minify']);
 });

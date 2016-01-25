@@ -133,3 +133,7 @@ md-toolbar section img{
 .bodyColor {
   background-color: #fafafa;
 }
+
+md-input-container {
+  display: inherit;
+}
