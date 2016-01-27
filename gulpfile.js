@@ -42,5 +42,6 @@ gulp.task('scripts', function(){
 
 gulp.task('watch', function(){
   gulp.watch('./public/javascript/**/*.js', ['scripts']);
-    gulp.watch('./public/views/**/*.html', ['minify']);
+    gulp.watch('./public/templates/**/*.html', ['minify']);
+    gulp.watch('./public/scss/**/*', ['styles']);
 });

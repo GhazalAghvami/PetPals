@@ -137,3 +137,11 @@ md-toolbar section img {
 .bodyColor {
   background-color: #fafafa;
 }
+
+#home {
+  background-image: image("/images/apartment.jpg");
+}
+
+md-input-container {
+  display: inherit;
+}
