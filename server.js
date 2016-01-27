@@ -13,8 +13,9 @@ require('./models/ChatModel');
 require('./models/SitterModel');
 require('./models/User');
 require('./config/passport');
+require('dotenv').config({silent:true});
 
-mongoose.connect(process.env.MONGOLAB_URI);
+mongoose.connect(process.env.MONGOLAB);
 
 app.set('views', path.join(__dirname, 'views'));
 //set the view engine that will render HTML from the server to the client
