@@ -1,5 +1,3 @@
-
-
 .animated {
     -webkit-animation-duration: 2s;
     animation-duration: 2s;
@@ -138,6 +136,30 @@ md-toolbar section img{
   }
 }
 
+#sidenavToolbar {
+  padding : 10px;
+  background-color: #38B0DE;
+}
+
+#topToolbar {
+  background-color: #ff8d00;
+}
+
+#logo {
+  padding-left:50px;
+}
+
+#bottomToolbar {
+text-align:center;
+height:50px;
+width:100%;
+margin:auto;
+background-color: #696969;
+md-button {
+  color: white;
+}
+}
+
 #splashpic {
   background-image: url('/images/apartment.jpg');
   background-repeat: no-repeat;
@@ -146,6 +168,68 @@ md-toolbar section img{
   height: 100%;
 }
 
+.animationImgs {
+  img {
+    padding: 40px 20px 60px 20px;
+  }
+}
+
+.errorMsg {
+  font-size: 12px;
+  padding: 20px;
+  color: red;
+}
+
+.pleaseLogin {
+  font-size: 16px;
+  text-align: center;
+  font-style: oblique;
+}
+
+#contactMsg {
+  padding-left: 100px;
+}
+
 md-input-container {
   display: inherit;
+}
+
+#aboutSection {
+  padding: 40px 90px 90px 90px;
+}
+
+.addEditforms {
+  padding: 150px 90px 40px 150px;
+  md-buttons {
+    padding-top: 50px;
+  }
+}
+
+.addPetPalButton {
+text-align:center;
+padding:25px;
+}
+
+
+.petPalCards {
+padding-left: 90px;
+padding-bottom: 90px;
+.cardTitle {
+  text-align: center;
+}
+}
+
+.chatList {
+background-color: #fafafa;
+padding-left:90px;
+padding-right: 90px;
+i {
+padding-top: 4px;
+}
+#chatMsg {
+padding:10px;
+}
+md-divider {
+padding: 5px
+}
 }

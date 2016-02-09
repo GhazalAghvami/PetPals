@@ -71,288 +71,6 @@
 })();
 
 (function() {
-    'use strict';
-    angular.module('app')
-        .controller('AddPetController', AddPetController);
-
-    function AddPetController(PetFactory, $state, UserFactory) {
-        var vm = this;
-        vm.status = UserFactory.status;
-        vm.pet = {
-            owner: vm.status.name,
-            unit: vm.status.unit
-        };
-
-        vm.addPet = function() {
-            PetFactory.postPet(vm.pet).then(function(res) {
-                $state.go("ViewPets");
-            });
-        };
-
-
-    }
-})();
-
-(function() {
-    'use strict';
-    angular.module('app')
-        .controller('AddSitterController', AddSitterController);
-
-    function AddSitterController(SitterFactory, $state, UserFactory) {
-        var vm = this;
-        vm.status = UserFactory.status;
-        vm.sitter = {
-            name: vm.status.name,
-            unit: vm.status.unit
-        };
-
-        vm.addSitter = function() {
-            SitterFactory.postSitter(vm.sitter).then(function(res) {
-                $state.go("ViewSitters");
-            });
-        };
-
-
-    }
-})();
-
-(function() {
-    'use strict';
-    angular.module('app')
-        .controller('EditPetController', EditPetController);
-
-    function EditPetController(PetFactory, $stateParams, $state) {
-        var vm = this;
-
-        vm.editPet = JSON.parse(localStorage.tempPet);
-
-        vm.updatePet = function() {
-            PetFactory.putPet(vm.editPet).then(function() {
-                $state.go('ViewPets');
-            });
-        };
-
-
-    }
-})();
-
-(function() {
-    'use strict';
-    angular.module('app')
-        .controller('EditSitterController', EditSitterController);
-
-    function EditSitterController(SitterFactory, $stateParams, $state) {
-        var vm = this;
-
-        vm.editSitter = JSON.parse(localStorage.tempSitter);
-
-        vm.updateSitter = function() {
-            SitterFactory.putSitter(vm.editSitter).then(function() {
-                $state.go('ViewSitters');
-            });
-        };
-
-    }
-})();
-
-(function() {
-    'use strict';
-    angular.module('app')
-        .controller('GlobalController', GlobalController);
-
-    function GlobalController(UserFactory, $state, $mdToast, $mdSidenav) {
-        var vm = this;
-        vm.isLogin = true;
-        vm.user = {};
-        vm.status = UserFactory.status;
-
-        vm.showSimpleToast = function(content) {
-            $mdToast.show(
-                $mdToast.simple()
-                .content(content)
-                .position("top right")
-                .hideDelay(3000)
-            );
-        };
-
-        vm.logout = function() {
-            $state.go('Home');
-            var name = vm.status.name.split("");
-            name[0] = name[0].toUpperCase();
-            name = name.join("");
-            vm.showSimpleToast('Goodbye ' + name + '! Come back soon.');
-            UserFactory.logout();
-        };
-
-        vm.register = function() {
-            UserFactory.register(vm.user).then(function() {
-                vm.close();
-                var name = vm.status.name.split("");
-                name[0] = name[0].toUpperCase();
-                name = name.join("");
-                vm.showSimpleToast('Welcome to Pets & Pals, ' + name + '!');
-            });
-        };
-
-        vm.login = function() {
-            UserFactory.login(vm.user).then(function() {
-                vm.close();
-                var name = vm.status.name.split("");
-                name[0] = name[0].toUpperCase();
-                name = name.join("");
-                vm.showSimpleToast('Welcome Back, ' + name + '!');
-            });
-        };
-
-        vm.toggleRight = function() {
-            $mdSidenav('right').toggle();
-        };
-
-        vm.close = function() {
-            $mdSidenav('right').toggle();
-        };
-
-    }
-})();
-
-(function() {
-    'use strict';
-    angular.module('app')
-        .controller('HomeController', HomeController);
-
-    function HomeController($state, UserFactory, $stateParams, HomeFactory) {
-        var vm = this;
-        vm.status = UserFactory.status;
-        vm.chats = {
-            name: vm.status.name,
-            unit: vm.status.unit
-        };
-        vm.msg = {
-            name: vm.status.name,
-            unit: vm.status.unit,
-            email: vm.status.email
-        };
-
-        vm.addMsg = function() {
-            HomeFactory.addMsg(vm.chats).then(function() {
-                vm.chats.msg = null;
-            });
-        };
-
-        vm.getMsg = function() {
-            HomeFactory.getMsg().then(function(msgs) {
-                vm.msgs = msgs;
-            });
-        };
-
-        setInterval(vm.getMsg, 500);
-
-        vm.contact = function() {
-            $state.go("Home");
-        };
-    }
-})();
-
-(function() {
-    'use strict';
-    angular.module('app')
-        .controller('ViewPetsController', ViewPetsController);
-
-    function ViewPetsController(PetFactory, $state, UserFactory, $mdDialog) {
-        var vm = this;
-        var alert;
-        vm.status = UserFactory.status;
-
-        PetFactory.getAllPets().then(function(res) {
-            vm.pets = res;
-        });
-
-        vm.deletePet = function(pet) {
-            PetFactory.deletePet(pet).then(function() {
-                vm.pets.splice(vm.pets.indexOf(pet), 1);
-            });
-        };
-
-        vm.editPet = function(id, obj) {
-            localStorage.setItem('tempPet', JSON.stringify(obj));
-            $state.go('EditPet', {
-                id: id
-            });
-        };
-
-        vm.showAlert = function(a) {
-            alert = $mdDialog.alert({
-                title: a.name + " the " + a.type,
-                content: a.bio,
-                ok: 'Okay!',
-            });
-            $mdDialog
-                .show(alert)
-                .finally(function() {
-                    alert = undefined;
-                });
-        };
-
-    }
-})();
-
-(function() {
-    'use strict';
-    angular.module('app')
-        .controller('ViewSittersController', ViewSittersController);
-
-    function ViewSittersController(SitterFactory, $state, UserFactory, $mdDialog) {
-        var vm = this;
-        vm.status = UserFactory.status;
-        var alert;
-
-        vm.items = [{
-            icon: "<i class='zmdi zmdi-wrench>''</i>",
-            link: "EditSitter"
-        }, {
-            icon: '<i class="zmdi zmdi-scissors"></i>',
-            link: ""
-        }, {
-            icon: '<i class="zmdi zmdi-more-vert"></i>',
-            link: "Contact"
-        }];
-
-
-        SitterFactory.getAllSitters().then(function(res) {
-            vm.sitters = res;
-        });
-
-        vm.deleteSitter = function(sitter) {
-            SitterFactory.deleteSitter(sitter).then(function() {
-                vm.sitters.splice(vm.sitters.indexOf(sitter), 1);
-            });
-        };
-
-        vm.editSitter = function(id, obj) {
-            localStorage.setItem('tempSitter', JSON.stringify(obj));
-            $state.go('EditSitter', {
-                id: id
-            });
-        };
-
-        vm.showAlert = function(a) {
-            alert = $mdDialog.alert({
-                title: a.name + " in Suite #" + a.unit,
-                content: a.bio,
-                ok: 'Okay!',
-            });
-            $mdDialog
-                .show(alert)
-                .finally(function() {
-                    alert = undefined;
-                });
-        };
-
-
-    }
-})();
-
-(function() {
     "use strict";
     angular.module('app')
         .factory('AuthInterceptor', AuthInterceptor);
@@ -513,6 +231,8 @@
                 setToken(res.data);
                 setUser();
                 q.resolve(res.data);
+            }, function(err) {
+                q.reject(err);
             });
             return q.promise;
         };
@@ -523,6 +243,8 @@
                 setToken(res.data);
                 setUser();
                 q.resolve(res.data);
+            }, function(err) {
+                q.reject(err);
             });
             return q.promise;
         };
@@ -588,5 +310,292 @@
         if (getToken()) setUser();
 
         return o;
+    }
+})();
+
+(function() {
+    'use strict';
+    angular.module('app')
+        .controller('AddPetController', AddPetController);
+
+    function AddPetController(PetFactory, $state, UserFactory) {
+        var vm = this;
+        vm.status = UserFactory.status;
+        vm.pet = {
+            owner: vm.status.name,
+            unit: vm.status.unit
+        };
+
+        vm.addPet = function() {
+            PetFactory.postPet(vm.pet).then(function(res) {
+                $state.go("ViewPets");
+            });
+        };
+
+    }
+})();
+
+(function() {
+    'use strict';
+    angular.module('app')
+        .controller('AddSitterController', AddSitterController);
+
+    function AddSitterController(SitterFactory, $state, UserFactory) {
+        var vm = this;
+        vm.status = UserFactory.status;
+        vm.sitter = {
+            name: vm.status.name,
+            unit: vm.status.unit
+        };
+
+        vm.addSitter = function() {
+            SitterFactory.postSitter(vm.sitter).then(function(res) {
+                $state.go("ViewSitters");
+            });
+        };
+
+
+    }
+})();
+
+(function() {
+    'use strict';
+    angular.module('app')
+        .controller('EditPetController', EditPetController);
+
+    function EditPetController(PetFactory, $stateParams, $state) {
+        var vm = this;
+
+        vm.editPet = JSON.parse(localStorage.tempPet);
+
+        vm.updatePet = function() {
+            PetFactory.putPet(vm.editPet).then(function() {
+                $state.go('ViewPets');
+            });
+        };
+
+
+    }
+})();
+
+(function() {
+    'use strict';
+    angular.module('app')
+        .controller('EditSitterController', EditSitterController);
+
+    function EditSitterController(SitterFactory, $stateParams, $state) {
+        var vm = this;
+
+        vm.editSitter = JSON.parse(localStorage.tempSitter);
+
+        vm.updateSitter = function() {
+            SitterFactory.putSitter(vm.editSitter).then(function() {
+                $state.go('ViewSitters');
+            });
+        };
+
+    }
+})();
+
+(function() {
+    'use strict';
+    angular.module('app')
+        .controller('GlobalController', GlobalController);
+
+    function GlobalController(UserFactory, $state, $mdToast, $mdSidenav) {
+        var vm = this;
+        vm.isLogin = true;
+        vm.user = {};
+        vm.status = UserFactory.status;
+
+        vm.showSimpleToast = function(content) {
+            $mdToast.show(
+                $mdToast.simple()
+                .content(content)
+                .position("top right")
+                .hideDelay(4000)
+            );
+        };
+
+        vm.logout = function() {
+            $state.go('Home');
+            var name = vm.status.name.split("");
+            name[0] = name[0].toUpperCase();
+            name = name.join("");
+            vm.showSimpleToast('Goodbye ' + name + '! Come back soon.');
+            UserFactory.logout();
+        };
+
+        vm.register = function() {
+            UserFactory.register(vm.user).then(function() {
+                vm.close();
+                var name = vm.status.name.split("");
+                name[0] = name[0].toUpperCase();
+                name = name.join("");
+                vm.showSimpleToast('Welcome to Pets & Pals, ' + name + '!');
+            }, function(err) {
+                vm.registerError = "Username already exists in our database";
+            });
+        };
+
+        vm.login = function() {
+            UserFactory.login(vm.user).then(function() {
+                vm.close();
+                var name = vm.status.name.split("");
+                name[0] = name[0].toUpperCase();
+                name = name.join("");
+                vm.showSimpleToast('Welcome Back, ' + name + '!');
+            }, function(err) {
+                vm.loginError = "Incorrect Username or Password";
+                vm.user.password = "";
+            });
+
+        };
+
+        vm.toggleRight = function() {
+            $mdSidenav('right').toggle();
+        };
+
+        vm.close = function() {
+            $mdSidenav('right').toggle();
+        };
+
+    }
+})();
+
+(function() {
+    'use strict';
+    angular.module('app')
+        .controller('HomeController', HomeController);
+
+    function HomeController($state, UserFactory, $stateParams, HomeFactory) {
+        var vm = this;
+        vm.status = UserFactory.status;
+        vm.chats = {
+            name: vm.status.name,
+            unit: vm.status.unit
+        };
+        vm.msg = {
+            name: vm.status.name,
+            unit: vm.status.unit,
+            email: vm.status.email
+        };
+
+        vm.addMsg = function() {
+            HomeFactory.addMsg(vm.chats).then(function() {
+                vm.chats.msg = null;
+            });
+        };
+
+        vm.getMsg = function() {
+            HomeFactory.getMsg().then(function(msgs) {
+                vm.msgs = msgs;
+            });
+        };
+
+        setInterval(vm.getMsg, 500);
+
+        vm.contact = function() {
+            $state.go("Home");
+        };
+    }
+})();
+
+(function() {
+    'use strict';
+    angular.module('app')
+        .controller('ViewPetsController', ViewPetsController);
+
+    function ViewPetsController(PetFactory, $state, UserFactory, $mdDialog) {
+        var vm = this;
+        var alert;
+        vm.status = UserFactory.status;
+
+        PetFactory.getAllPets().then(function(res) {
+            vm.pets = res;
+        });
+
+        vm.deletePet = function(pet) {
+            PetFactory.deletePet(pet).then(function() {
+                vm.pets.splice(vm.pets.indexOf(pet), 1);
+            });
+        };
+
+        vm.editPet = function(id, obj) {
+            localStorage.setItem('tempPet', JSON.stringify(obj));
+            $state.go('EditPet', {
+                id: id
+            });
+        };
+
+        vm.showAlert = function(a) {
+            alert = $mdDialog.alert({
+                title: a.name + " the " + a.type,
+                content: a.bio,
+                ok: 'Okay!',
+            });
+            $mdDialog
+                .show(alert)
+                .finally(function() {
+                    alert = undefined;
+                });
+        };
+
+    }
+})();
+
+(function() {
+    'use strict';
+    angular.module('app')
+        .controller('ViewSittersController', ViewSittersController);
+
+    function ViewSittersController(SitterFactory, $state, UserFactory, $mdDialog) {
+        var vm = this;
+        vm.status = UserFactory.status;
+        var alert;
+
+        vm.items = [{
+            icon: "<i class='zmdi zmdi-wrench>''</i>",
+            link: "EditSitter"
+        }, {
+            icon: '<i class="zmdi zmdi-scissors"></i>',
+            link: ""
+        }, {
+            icon: '<i class="zmdi zmdi-more-vert"></i>',
+            link: "Contact"
+        }];
+
+
+        SitterFactory.getAllSitters().then(function(res) {
+            vm.sitters = res;
+        });
+
+        vm.deleteSitter = function(sitter) {
+            SitterFactory.deleteSitter(sitter).then(function() {
+                vm.sitters.splice(vm.sitters.indexOf(sitter), 1);
+            });
+        };
+
+        vm.editSitter = function(id, obj) {
+            localStorage.setItem('tempSitter', JSON.stringify(obj));
+            $state.go('EditSitter', {
+                id: id
+            });
+        };
+
+        vm.showAlert = function(a) {
+            alert = $mdDialog.alert({
+                title: a.name + " in Suite #" + a.unit,
+                content: a.bio,
+                ok: 'Okay!',
+            });
+            $mdDialog
+                .show(alert)
+                .finally(function() {
+                    alert = undefined;
+                });
+        };
+
+
     }
 })();

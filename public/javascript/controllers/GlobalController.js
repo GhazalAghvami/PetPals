@@ -14,7 +14,7 @@
         $mdToast.simple()
         .content(content)
         .position("top right")
-        .hideDelay(3000)
+        .hideDelay(4000)
       );
     };
 
@@ -34,6 +34,8 @@
         name[0] = name[0].toUpperCase();
         name = name.join("");
         vm.showSimpleToast('Welcome to Pets & Pals, '+name+ '!');
+      }, function(err){
+        vm.registerError = "Username already exists in our database";
       });
     };
 
@@ -44,7 +46,11 @@
         name[0] = name[0].toUpperCase();
         name = name.join("");
         vm.showSimpleToast('Welcome Back, '+name+ '!');
+      }, function(err){
+        vm.loginError = "Incorrect Username or Password";
+        vm.user.password = "";
       });
+
     };
 
     vm.toggleRight = function() {

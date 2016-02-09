@@ -1,22 +1,22 @@
 <div ng-controller="ViewSittersController as vm" class='bodyColor'>
-  <div style="text-align:center; padding:25px;">
-    <md-button layout-fill class="md-raised" ui-sref="AddSitter"> CLICK TO ADD YOURSELF TO OUR LIST OF PALS </md-button>
+  <div class="addPetPalButton">
+    <md-button layout-fill class="md-raised" ui-sref="AddSitter" ng-show="vm.status._id"> CLICK TO ADD YOURSELF TO OUR LIST OF PALS </md-button>
   </div>
+  <div class="pleaseLogin" ng-show="!vm.status._id"> Please login/register to add your pet to the list. </div>
   <section layout layout-align="center">
-  <div class="animated bounceInLeft" style="padding-bottom: 30px" >
-    <img src="/images/peeps.png" style="padding:8px">
-    <img src="/images/peeps.png" style="padding:8px">
-    <img src="/images/peeps.png" style="padding:8px">
-  <img src="/images/peeps.png" style="padding:8px">
+  <div class="animated bounceInLeft animationImgs" >
+    <img src="/images/peeps.png">
+    <img src="/images/peeps.png">
+    <img src="/images/peeps.png">
+  <img src="/images/peeps.png">
 </div>
 </section>
-  <md-content style="padding-left: 90px; padding-bottom: 90px;" class='bodyColor'>
+  <md-content class="petPalCards bodyColor">
     <div layout layout-wrap>
       <md-card  flex="30" layout-wrap ng-repeat="a in vm.sitters">
-        <!-- <img ng-src="/images/polkapal.png" style="height:90px; width:90px; margin:auto; padding-top:20px"> -->
         <md-card-content layout-wrap>
           <span flex></span>
-          <div style="text-align:center;">
+          <div class='cardTitle'>
             <h1> {{a.name | uppercase }}</h1>
           </div>
           <h5> Suite: </h5>

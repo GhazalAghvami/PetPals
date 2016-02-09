@@ -1,7 +1,7 @@
 <div ng-controller="AddPetController as vm" class='bodyColor'>
 
-  <form ng-submit="vm.addPet()" layout="row" style="padding: 90px">
-    <div flex="60" style="padding-left: 40px">
+  <form ng-submit="vm.addPet()" layout="row" class="addEditforms">
+    <div flex="60">
       <md-input-container layout-padding>
         <label> Your Name </label>
         <input required ng-model="vm.pet.owner | usernameFilter"></input>
@@ -32,7 +32,7 @@
           <textarea required ng-model="vm.pet.bio" md-maxlength="2000"></textarea>
         </md-input-container>
 
-        <div layout="row" style="padding-top:50px">
+        <div layout="row">
           <md-button type="submit" class="md-raised">Add Pet</md-button>
           <md-button type="button" class="md-raised" ui-sref="ViewPets">Cancel</md-button>
         </div>

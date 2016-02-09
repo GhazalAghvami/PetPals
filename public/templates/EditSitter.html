@@ -1,7 +1,7 @@
 <div ng-controller="EditSitterController as vm" class='bodyColor'>
 
-  <form ng-submit="vm.updateSitter()" layout="row" style="padding: 90px">
-<div flex="60" style="padding-left: 40px">
+  <form ng-submit="vm.updateSitter()" layout="row" class="addEditforms">
+<div flex="60">
     <md-input-container layout-padding>
       <label> Pal Name </label>
       <input required ng-model="vm.editSitter.name" ></input>
@@ -15,7 +15,7 @@
       <textarea ng-model="vm.editSitter.bio" columns="1" md-maxlength="2000"></textarea>
       </md-input-container>
 
-    <div layout="row" style="padding-top:50px">
+    <div layout="row">
       <md-button type="submit" class="md-raised"> Edit Yourself, Pal </md-button>
       <md-button type="button" class="md-raised" ui-sref="ViewSitters"> Cancel </md-button>
     </div>

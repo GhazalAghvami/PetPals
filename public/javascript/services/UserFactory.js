@@ -13,6 +13,8 @@
         setToken(res.data);
         setUser();
         q.resolve(res.data);
+      }, function(err){
+        q.reject(err);
       });
       return q.promise;
     };
@@ -23,6 +25,8 @@
         setToken(res.data);
         setUser();
         q.resolve(res.data);
+      }, function(err){
+        q.reject(err);
       });
       return q.promise;
     };
