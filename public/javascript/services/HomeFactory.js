@@ -9,8 +9,8 @@
 
 		o.addMsg = function(indx) {
 		  var q = $q.defer();
-		  $http.post('/api/chats', indx).success(function(){
-		  q.resolve();
+		  $http.post('/api/chats', indx).then(function(res){
+		  q.resolve(res.data);
 		});
 		return q.promise;
 		};

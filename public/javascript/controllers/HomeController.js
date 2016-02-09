@@ -10,7 +10,8 @@
     vm.msg = {name:vm.status.name, unit:vm.status.unit, email: vm.status.email};
 
     vm.addMsg = function() {
-      HomeFactory.addMsg(vm.chats).then(function(){
+      HomeFactory.addMsg(vm.chats).then(function(res){
+        vm.msgs.unshift(res);
        vm.chats.msg = null;
       });
     };
@@ -21,7 +22,8 @@
       });
     };
 
-    setInterval(vm.getMsg, 500);
+vm.getMsg();
+  //  setInterval(vm.getMsg, 500);
 
     vm.contact = function() {
       $state.go("Home");
